@@ -2,12 +2,18 @@
 <html>
 	<head>
 		<title>OCR</title>
-		<script type="text/javascript" src="ocr.js"></script>
+		<script type="text/javascript" src="main.js"></script>
 	</head>
-	<body onload="drawGrid()">
+	<body onload="init()">
 		<div id="main-container" style="text-align: center;">
 		<h1>OCR</h1>
 		<canvas id="canvas" width="200" height="200"></canvas>
+		<form name="input">
+			<p>Digit: <input id="digit" type="text"></p>
+			<input type="button" value="Train" onclick="train()">
+			<input type="button" value="Test" onclick="test()">
+			<input type="button" value="Reset" onclick="init()">
+		</form>
 		</div>
 	</body>
 </html>
