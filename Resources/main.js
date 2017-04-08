@@ -80,6 +80,7 @@ function train() {
 			trainArray: TRAIN_ARRAY,
 			train: true
 		};
+		console.log('Body: ', json);
 		sendData(json);
 		TRAINING_REQUEST_COUNT = 0;
 		TRAIN_ARRAY = [];
@@ -88,13 +89,14 @@ function train() {
 
 function sendData(json) {
 	var xhr = new XMLHttpRequest();
-	xhr.open('POST', 'localhost:3000');
+	xhr.open('POST', '/ocr', true);
 	xhr.onload = () => {
 		var response = JSON.parse(xhr.response);
+		console.log(response);
 		if (response.type === 'test') {
 			alert("Prediction: ");
 		}
 	}
-	var msg = JSON.stringify(json);
-	xhr.send(msg);
+	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xhr.send(JSON.stringify(json));
 }
