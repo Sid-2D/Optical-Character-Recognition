@@ -73,7 +73,7 @@ function train() {
 	if (!digitVal || DATA.indexOf(1) < 0) {
 		return;
 	}
-	TRAIN_ARRAY.push({ 'y0': DATA, 'label': parseInt(digitVal) });
+	TRAIN_ARRAY.push({ input: DATA, output: [parseInt(digitVal)] });
 	TRAINING_REQUEST_COUNT++;
 	if (TRAINING_REQUEST_COUNT === BATCH_SIZE) {
 		var json = {
