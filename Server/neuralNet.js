@@ -1,14 +1,15 @@
 var synaptic = require('synaptic'),
 	fs = require('fs');
 var data = fs.readFileSync('Server/data.json');
-var network = new synaptic.Architect.Perceptron(400, 100, 10);
+// var network = new synaptic.Architect.Perceptron(400, 10, 10);
+var network = new synaptic.Network.fromJSON(JSON.parse(data));
 var trainer = new synaptic.Trainer(network);
 
 module.exports = {
 	train: function (imagePixels) {
 		trainer.train(imagePixels, {
-			iterations: 1000,
-			error: .0001,
+			iterations: 100,
+			error: .001,
 			rate: 0.3
 		});
 	},
@@ -17,7 +18,6 @@ module.exports = {
 	},
 	save: function () {
 		data = network.toJSON();
-		console.log(data);
 		fs.writeFile('Server/data.json', JSON.stringify(data, null, 2), err => {
 			if (err) {
 				console.log(err);

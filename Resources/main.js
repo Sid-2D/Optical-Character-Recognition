@@ -58,7 +58,9 @@ function fillSquare(ctx, x, y) {
 }
 
 function test() {
+	console.log('Testing...');
 	if (DATA.indexOf(1) < 0) {
+		console.log("Returning in middle.");
 		return;
 	}
 	var json = {
@@ -69,6 +71,7 @@ function test() {
 }
 
 function train() {
+	console.log('Training...');
 	var digitVal = document.getElementById("digit").value;
 	if (!digitVal || DATA.indexOf(1) < 0) {
 		return;

@@ -14,10 +14,18 @@ app.get('/', (req, res) => {
 
 app.post('/ocr', (req, res) => {
 	if (req.body.train) {
+		console.log('Request received for TRAIN.');
+		console.log('Starting training.');
 		neuralNet.train(req.body.trainArray);
-		neuralNet.save();
+		console.log('Training complete.');
+		// neuralNet.save();
+	} 
+	if (req.body.predict) {
+		console.log('Request received for PREDICTION.');
+		console.log("Starting prediction.")
+		console.log(neuralNet.activate(req.body.image));
+		console.log("Prediction complete.")
 	}
-	res.json(req.body);
 });
 
 app.listen(3000, err => err || console.log('Listening on port 3000.'));
