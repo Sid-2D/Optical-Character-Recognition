@@ -96,9 +96,6 @@ function sendData(json) {
 	xhr.onload = () => {
 		var response = JSON.parse(xhr.response);
 		console.log(response);
-		if (response.type === 'test') {
-			alert("Prediction: ");
-		}
 	}
 	xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xhr.send(JSON.stringify(json));

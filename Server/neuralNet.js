@@ -8,8 +8,8 @@ var trainer = new synaptic.Trainer(network);
 module.exports = {
 	train: function (imagePixels) {
 		trainer.train(imagePixels, {
-			iterations: 100,
-			error: .001,
+			iterations: 1000,
+			error: .0001,
 			rate: 0.3
 		});
 	},
@@ -18,7 +18,7 @@ module.exports = {
 	},
 	save: function () {
 		data = network.toJSON();
-		fs.writeFile('Server/data.json', JSON.stringify(data, null, 2), err => {
+		fs.writeFile('Server/data.json', JSON.stringify(data), err => {
 			if (err) {
 				console.log(err);
 			}
